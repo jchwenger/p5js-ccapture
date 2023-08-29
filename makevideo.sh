@@ -3,7 +3,7 @@
 outputName="output.mp4"
 dimensions="540x540"
 fps=30
-frameName="%07d.png"
+frameName="images/%07d.png"
 crf=17 # CRF should be between 17 and 28. Lower is higher quality
 
 ffmpeg \
