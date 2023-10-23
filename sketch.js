@@ -1,5 +1,8 @@
 // the frame rate
-let fps = 60;
+const fps = 60;
+
+// the number of images to record
+const nImages = 100;
 
 // the canvas capturer instance
 let capturer = new CCapture({ format: 'png', framerate: fps });
@@ -21,13 +24,15 @@ function draw() {
     capturer.start();
   }
 
-  // the drawing
+  // the drawing: twenty rectangles with random colours
   background(255);
-  fill(Math.random() * 255, Math.random() * 255, Math.random() * 255);
-  rect(Math.random() * width, Math.random() * height, 20, 20);
+  for (let i = 0; i < 20; i++) {
+    fill(random(0, 255), random(0, 255), random(0, 255));
+    rect(random(0, width), random(0, height), random(10, 100), random(10, 100));
+  }
 
-  // here I use frameCount to record 100 images
-  if (frameCount > 100) {
+  // here I use frameCount to record images
+  if (frameCount > nImages) {
     noLoop();
     console.log('finished recording.');
     capturer.stop();
