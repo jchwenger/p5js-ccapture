@@ -2,14 +2,14 @@
 const fps = 60;
 
 // the number of images to record
-const nImages = 100;
+const nImages = 5000;
 
 // the canvas capturer instance
 let capturer = new CCapture({ format: 'png', framerate: fps });
 
 // setup the drawing
 function setup() {
-  createCanvas(540, 540);
+  createCanvas(28, 28);
 
   // this is optional, but lets us see how the animation will look in browser.
   frameRate(fps);
@@ -27,8 +27,8 @@ function draw() {
   // the drawing: twenty rectangles with random colours
   background(255);
   for (let i = 0; i < 20; i++) {
-    fill(random(0, 255), random(0, 255), random(0, 255));
-    rect(random(0, width), random(0, height), random(10, 100), random(10, 100));
+    fill(random(0, 255));
+    rect(random(0, width), random(0, height), random(1, width), random(0, height));
   }
 
   // here I use frameCount to record images
