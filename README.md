@@ -21,7 +21,7 @@ tar \
 
 ### Create video from ffmpeg
 
-- **Frame rate**: 30 (see `fps` in the code)
+- **Frame rate**: 60 (see `fps` in the code)
 - **Dimensions**: 540x540 (should match `createCanvas()` in the code)
 - **Frame filenames**: `"%07d.png"` (incrementing numbers, 7 numbers long)
 - **Quality (CRF)**: 17 (see [ffmpeg docs](https://trac.ffmpeg.org/wiki/Encode/H.264), but 17–28 is reasonable, 0 is lossless)
@@ -53,4 +53,13 @@ convert \
     -delay 3.33 \
     -loop 0 \
     images/*.png output.gif
+```
+
+### Note: `saveGif`
+
+The [new built-in `saveGif`](https://p5js.org/reference/#/p5/saveGif) function in p5 might be even simpler to use: instead of saving images to create a gif, you can create the gif, and then decompose it into its constituent images.
+
+With ImageMagick, you can then convert the gif to png (giving you `target-0.png`, `target-1.png`, [reference](https://askubuntu.com/a/387998)):
+```bash
+convert -coalesce animation.gif target.png
 ```
