@@ -6,6 +6,9 @@ const fps = 60;
 // the number of images to record
 const n_images = 5000;
 
+// bw or colour?
+const bnw = false;
+
 // the canvas capturer instance
 let capturer = new CCapture({ format: 'png', framerate: fps });
 
@@ -28,18 +31,20 @@ function draw() {
 
   // the drawing: twenty rectangles with random colours
   background(255);
-  fill(Math.random() * 255, Math.random() * 255, Math.random() * 255);
+  
+  // if bnw, fill with grey, otherwise with color
+  bnw ? fill(Math.random() * 255) : fill(Math.random() * 255, Math.random() * 255, Math.random() * 255);
 
   switch (type) {
     case 0: // rectangles
       rectMode(CENTER);
-      rect(random(20, width), random(20, height) , random(20, width/2), random(20, height/2));
+      rect(random(0, width), random(0, height) , random(0, width/2), random(0, height/2));
       break;
     case 1: // ellipses
-      ellipse(random(20, width), random(20, height) , random(20, width/2), random(20, height/2));
+      ellipse(random(0, width), random(0, height) , random(0, width/2), random(0, height/2));
       break;
     case 2: // triangles
-      const centre = createVector(random(20, width), random(20, height))
+      const centre = createVector(random(0, width), random(0, height))
       const size = random(10, width/2);
       const rotation = random(0, 2 * PI);
       drawEquilateralTriangle(centre, size, rotation);
